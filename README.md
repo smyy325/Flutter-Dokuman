@@ -740,3 +740,144 @@ Döngü 2 : 4
 <br></br>
 <br></br>
 ## Collections
+### List
+- Aynı	türde	verileri	bir	arada	tutar.
+- İndeks	numaraları	0	dan	başlar.
+- Veri	eklendikçe	otomatik	olarak	boyutu	artar.
+- Listeyi	filtrelemek	için	koşul	yazılmalıdır. Iterable sınıfından	yaralanılır.
+```flutter
+void main(){
+  var plakalar = [16, 23, 6];
+  var meyveler = <String>[];
+  //veri ekleme
+  meyveler.add("Muz");
+  meyveler.add("Kiraz");
+  meyveler.add("Elma");
+  print(meyveler);
+
+  //Güncelleme
+  meyveler[1]="Yeni Kiraz";
+  print(meyveler);
+
+  //Insert
+  meyveler.insert(1, "Portakal");
+  print(meyveler);
+
+  //veri okuma
+  String meyve = meyveler[0];
+  print(meyve);
+
+  print("Boyut: ${meyveler.length}");
+  print("Boş Kontrol: ${meyveler.isEmpty}");
+
+  //For Each
+  for( var meyve in meyveler){
+    print("Sonuç: $meyve");
+  }
+
+  //0-1-2-3
+  for(var i=0; i<meyveler.length;i++){
+    print("$i. -> ${meyveler[i]}");
+  }
+
+  print(meyveler);
+  var liste = meyveler.reversed.toList();
+  print(liste);
+
+  meyveler.sort();
+  print(meyveler);
+
+  meyveler.removeAt(1);
+  print(meyveler);
+
+  meyveler.clear();
+  print(meyveler);
+}
+```
+<br></br>
+```flutter
+class Ogrenciler{
+  int no;
+  String ad;
+  String sinif;
+
+  Ogrenciler({required this.no, required this.ad, required this.sinif});
+}
+
+void main(){
+  var o1 = Ogrenciler(no: 123, ad: "Ayşe", sinif: "9C");
+  var o2 = Ogrenciler(no: 134, ad: "Ahmet", sinif: "10C");
+  var o3 = Ogrenciler(no: 145, ad: "Ali", sinif: "11C");
+
+  var ogrencilerListesi = <Ogrenciler>[];
+  ogrencilerListesi.add(o1);
+  ogrencilerListesi.add(o2);
+  ogrencilerListesi.add(o3);
+  
+  for( var o in ogrencilerListesi){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  // Sorting
+  print("---------------------------- Sayısal: Küçükten > büyüğe--------------------------");
+  Comparator<Ogrenciler> s1 = (x,y) => x.no.compareTo(y.no);
+  ogrencilerListesi.sort(s1);
+  for( var o in ogrencilerListesi){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  print("---------------------------- Sayısal: büyükten > küçüğe--------------------------");
+  Comparator<Ogrenciler> s2 = (x,y) => y.no.compareTo(x.no);
+  ogrencilerListesi.sort(s2);
+  for( var o in ogrencilerListesi){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  print("---------------------------- Metinsel: Küçükten > büyüğe--------------------------");
+  Comparator<Ogrenciler> s3 = (x,y) => x.ad.compareTo(y.ad);
+  ogrencilerListesi.sort(s3);
+  for( var o in ogrencilerListesi){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  print("---------------------------- Metinsel: büyükten > küçüğe--------------------------");
+  Comparator<Ogrenciler> s4 = (x,y) => y.ad.compareTo(x.ad);
+  ogrencilerListesi.sort(s4);
+  for( var o in ogrencilerListesi){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  //Filtreleme
+  print("---------------------------- Filtreleme 1 --------------------------");
+  Iterable<Ogrenciler> f1 = ogrencilerListesi.where((ogrenciNesnesi){
+    return ogrenciNesnesi.no > 123 && ogrenciNesnesi.no<140;
+  });
+
+  var liste1 = f1.toList();
+  for( var o in liste1){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+  print("---------------------------- Filtreleme 2 --------------------------");
+  Iterable<Ogrenciler> f2 = ogrencilerListesi.where((ogrenciNesnesi){
+    return ogrenciNesnesi.ad.contains("e");
+  });
+
+  var liste2 = f2.toList();
+  for( var o in liste2){
+    print("No: ${o.no}\nAd: ${o.ad}\nSınıf: ${o.sinif}");
+  }
+
+}
+```
+### HashSet
+- List ile	aynı	özelliklere	sahiptir.
+- İçine	eklenen	veriler	düzensiz	rasgele	yerleştirilir.
+- Aynı	veriden	tekrar	kayıt	edilemez.
+### Nesne	Tabanlı	- HashSet
+- Set	yapı	itibari	ile	içine	insert	edilen	verileri	rasgele	sıralamaktadır.
+- Bu	rasgele	sıralama	ınt,string içeren	set	gibi	ifadelerde	kolaylıkla	
+yapılabiliyor.
+- Fakat	set	içine	nesne	yerleştirildiğinde	nesne	içindeki	hangi	değişkene	
+göre	bu	rasgele	sıralamayı	yapacağını	belirtmemiz	gerekiyor.
+- HashMap: Key ve	value ilişkisi	ile	çalışır. Key ile	verilere	erişiriz.
