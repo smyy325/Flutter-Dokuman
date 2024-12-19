@@ -876,8 +876,63 @@ void main(){
 - Aynı	veriden	tekrar	kayıt	edilemez.
 ### Nesne	Tabanlı	- HashSet
 - Set	yapı	itibari	ile	içine	insert	edilen	verileri	rasgele	sıralamaktadır.
-- Bu	rasgele	sıralama	ınt,string içeren	set	gibi	ifadelerde	kolaylıkla	
-yapılabiliyor.
-- Fakat	set	içine	nesne	yerleştirildiğinde	nesne	içindeki	hangi	değişkene	
-göre	bu	rasgele	sıralamayı	yapacağını	belirtmemiz	gerekiyor.
+- Bu	rasgele	sıralama	ınt,string içeren	set	gibi	ifadelerde	kolaylıkla	yapılabiliyor.
+- Fakat	set	içine	nesne	yerleştirildiğinde	nesne	içindeki	hangi	değişkene	göre	bu	rasgele	sıralamayı	yapacağını	belirtmemiz	gerekiyor.
 - HashMap: Key ve	value ilişkisi	ile	çalışır. Key ile	verilere	erişiriz.
+  <br> </br>
+## Flutter 
+### const Kullanımı
+- Eğer widget içine sayfa yenilendiğinde bir veri eklenmicekse yani widgetta değişim olmayacaksa const kullanılır.
+- Bu özelliği bütün widgetlarda kullanabiliriz.
+- const özelliği olan widget sayfa yenilenirken daha az işlem gerektirir çünkü içeriği sabittir ve performansa etkisi faydası vardır.
+
+### Row
+- Widgetların yan yana durmasını sağlar.
+- Varsayılan başlangıç noktası sol üst köşedir.
+- Boyutu içindeki widgetlara göre değişir.
+
+### Column
+- Widgetların alt alta durmasını sağlar.
+- Varsayılan başlangıç noktası sol üst köşedir.
+- Boyutu içindeki widgetlara göre değişir.
+
+### Stack
+- Widgetların üst üste durmasını sağlar.
+- İlk eklenen en altta yer alır.
+- Varsayılan başlangıç noktası sol üst köşedir.
+- Boyutu içindeki widgetlara göre değişir.
+
+### MainAxisAlignment özelliği
+- Row veya Column içinde Row ise yatayda , column ise dikeyde hizalama yapılır.
+
+### CrossAxisAlignment özelliği
+- MainAxisAlignment’in tersi yönde hizalama yapar.
+- Row veya Column içinde satırsa dikeyde, column ise yatayda hizalama yapılır.
+- Bunu sağlamak için row veya column içinde hareket alanı olmalıdır.
+
+### Tasarımı Ekrana Göre Oranlama
+- Tasarımda sabit olarak oluşturduğumuz genişlik , yükseklik , boşluk miktarı gibi sayıları ekranın boyutuna oranlayarak işlem yapabiliriz.
+- Bu şekilde yapılan oranlama dinamik olarak boyutlama sağlamaktadır. 
+- Örneğin : Butonun genişliğini ekranın yarısı kadar olsun diyebiliriz.
+- Oranlama işlemi için ekran bilgisini MediaQuery sınıfı ile alabiliriz.
+
+### MainAxisSize
+- Row veya Column içinde bulunduğu alanın boyutunu belirler. 
+- MainAxisSize.max aslında match parent 
+- MainAxisSize.min aslında wrap content
+
+### Center
+- Widgetları içinde bulunduğu alana göre yatay ve dikeyde merkezler.
+
+### Align
+- İçinde bulunduğu alana göre hizalama yapar. 
+- Center yapısının daha detaylı hali olarak düşünülebilir.
+- Row yatayda sayfayı kapladığı için sadece dikeyde row alanını ortalayabilir. Row içine ayrı müdahale etmeliyiz.
+- Row içinide ortalarsak yatay ve dikeyde ortada olur.
+
+### Expanded
+- Widget bulunduğu alanda Row içindeyse yatayda , Column içindeyse dikeyde boş olan alanda yayılır.
+- Eğer birden fazla expanded olursa kendi aralarında eşit oranda yayılırlar.
+- Expanded : flex ( oranlama ): Yayılma miktarı için oranlama yapılabilir. Oranlama için flex özelliği ile kullanılabilir.
+- Widget bulunduğu alanda Row içindeyse yatayda , Column içindeyse dikeyde boş olan alanda yayılır. 
+- Ters yönde yayılma yapmak için CrossAxisAlignment.stretch özelliği kullanılır.
